@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Revive the Shine | Premium Carpet &amp; Upholstery Cleaning</title>
+  <meta name="description" content="Premium carpet and upholstery cleaning in Chester. Call +44 7780 536632 or email info@revivetheshine.co.uk for a quote. Open Monday to Sunday." />
+  <meta name="theme-color" content="#0b1f1a" />
+  <link rel="icon" type="image/svg+xml" href="logo-mark.svg" />
+  <link rel="apple-touch-icon" href="logo-mark.svg" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,8 +41,11 @@
       padding: 1rem 2rem;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { font-size: 1.4rem; font-weight: 700; color: var(--accent); letter-spacing: -0.5px; }
+    .logo { font-size: 1.4rem; font-weight: 700; color: var(--accent); letter-spacing: -0.5px; display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
     .logo span { color: var(--white); }
+    .logo-mark { width: 42px; height: 42px; object-fit: contain; flex-shrink: 0; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.05; }
+    .logo-tagline { font-size: 0.6rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); }
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav a { color: var(--light); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.5px; transition: color 0.2s; }
     nav a:hover { color: var(--accent); }
@@ -245,8 +252,11 @@
 
     /* FOOTER */
     footer { background: #060f0c; border-top: 1px solid rgba(201,168,76,0.1); padding: 2rem; text-align: center; }
+    .footer-mark { width: 56px; height: 56px; object-fit: contain; margin: 0 auto 0.6rem; display: block; }
     .footer-logo { color: var(--accent); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
     footer p { color: var(--muted); font-size: 0.82rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { color: var(--accent2); }
 
     /* AREAS BAR */
     .areas-bar {
@@ -294,7 +304,13 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Revive <span>the Shine</span></div>
+  <a class="logo" href="#home" aria-label="Revive the Shine — home">
+    <img class="logo-mark" src="logo-mark.svg" alt="Revive the Shine logo" width="42" height="42" />
+    <span class="logo-text">
+      <span style="color:var(--accent);">Revive <span style="color:var(--white);">the Shine</span></span>
+      <span class="logo-tagline">Carpet &amp; Upholstery</span>
+    </span>
+  </a>
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -606,7 +622,7 @@
   <div class="container">
     <p class="section-label">Get in Touch</p>
     <h2>Get a Quote or Ask a Question</h2>
-    <p class="section-intro">Call us or send a WhatsApp message for carpet and upholstery cleaning in Chester.</p>
+    <p class="section-intro">Call, email, or send a WhatsApp message for carpet and upholstery cleaning in Chester.</p>
     <div class="contact-grid">
       <div class="contact-info">
         <h3>Our Details</h3>
@@ -622,6 +638,13 @@
           <div>
             <h4>WhatsApp</h4>
             <p><a href="https://wa.me/447780536632?text=Hi%20Revive%20the%20Shine%2C%20I%27d%20like%20a%20quote.%20Minimum%20starting%20price%20-%20Standard%20Cleaning%20%C2%A370%20and%20Deep%20Cleaning%20%C2%A390.">Message us for quote and query</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:info@revivetheshine.co.uk">info@revivetheshine.co.uk</a></p>
           </div>
         </div>
         <div class="contact-detail">
@@ -652,8 +675,9 @@
 
 <!-- FOOTER -->
 <footer>
+  <img class="footer-mark" src="logo-mark.svg" alt="" width="56" height="56" />
   <div class="footer-logo">Revive the Shine</div>
-  <p>Chester &nbsp;|&nbsp; +44 7780 536632 &nbsp;|&nbsp; Monday &ndash; Sunday</p>
+  <p>Chester &nbsp;|&nbsp; +44 7780 536632 &nbsp;|&nbsp; <a href="mailto:info@revivetheshine.co.uk">info@revivetheshine.co.uk</a> &nbsp;|&nbsp; Monday &ndash; Sunday</p>
   <p style="margin-top:0.5rem;">&copy; 2026 Revive the Shine. All rights reserved.</p>
 </footer>
 
