@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revive the Shine | Premium Carpet &amp; Upholstery Cleaning</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:    #0b1f1a;
+      --mid:     #133029;
+      --accent:  #c9a84c;
+      --accent2: #e6c97a;
+      --light:   #f5f0e8;
+      --white:   #ffffff;
+      --muted:   #8aab9e;
+      --card:    #162e27;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(11,31,26,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-size: 1.4rem; font-weight: 700; color: var(--accent); letter-spacing: -0.5px; }
+    .logo span { color: var(--white); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { color: var(--light); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.5px; transition: color 0.2s; }
+    nav a:hover { color: var(--accent); }
+
+    /* HERO */
+    #home {
+      min-height: 100vh;
+      background-image:
+        linear-gradient(135deg, rgba(11,31,26,0.88) 0%, rgba(11,31,26,0.72) 50%, rgba(11,31,26,0.90) 100%),
+        url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    #home::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.08) 0%, transparent 65%);
+    }
+    .hero-content { position: relative; max-width: 760px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+      color: var(--accent); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+      padding: 0.4rem 1.2rem; border-radius: 20px; margin-bottom: 1.5rem;
+    }
+    h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800; line-height: 1.15; color: var(--white); margin-bottom: 1.2rem; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 540px; margin: 0 auto 2.5rem; }
+    .btn {
+      display: inline-block; background: var(--accent); color: var(--dark);
+      font-weight: 700; font-size: 0.95rem; padding: 0.85rem 2.2rem; border-radius: 6px;
+      text-decoration: none; transition: background 0.2s, transform 0.15s; letter-spacing: 0.3px;
+    }
+    .btn:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); margin-left: 1rem; }
+    .btn-outline:hover { background: var(--accent); color: var(--dark); }
+    .hero-stats { margin-top: 3.5rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+    .stat strong { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+    .stat span { font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--white); margin-bottom: 1rem; }
+    .section-intro { color: var(--muted); max-width: 560px; font-size: 1.05rem; }
+
+    /* ABOUT */
+    #about { background: var(--mid); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .about-text p { color: #aec8be; margin-bottom: 1rem; }
+    .about-features { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .feature-row { display: flex; align-items: flex-start; gap: 0.8rem; }
+    .feature-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: rgba(201,168,76,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .feature-icon i { color: var(--accent); font-size: 1rem; }
+    .feature-row h4 { color: var(--white); font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .feature-row p { color: var(--muted); font-size: 0.88rem; margin: 0; }
+
+    /* About image panel */
+    .about-visual { position: relative; border-radius: 12px; overflow: hidden; min-height: 420px; }
+    .about-visual img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; display: block; }
+    .about-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(11,31,26,0.93) 0%, rgba(11,31,26,0.3) 60%, transparent 100%);
+      padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .about-overlay h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; }
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .checklist li { display: flex; gap: 0.7rem; align-items: flex-start; color: #d0e8df; font-size: 0.88rem; }
+    .checklist li i { color: var(--accent); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0; }
+
+    /* SERVICES */
+    #services { background: var(--dark); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .service-card {
+      background: var(--card); border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 10px; overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .service-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-3px); }
+    .service-card-img { width: 100%; height: 170px; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s; }
+    .service-card:hover .service-card-img { filter: brightness(1); }
+
+    /* BEFORE / AFTER SPLIT */
+    .ba-split { position: relative; display: flex; width: 100%; height: 200px; overflow: hidden; }
+    .ba-half { position: relative; flex: 1; overflow: hidden; }
+    .ba-half img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ba-half + .ba-half { border-left: 2px solid var(--accent); }
+    .ba-tag {
+      position: absolute; bottom: 10px; left: 10px;
+      background: rgba(0,0,0,0.78); color: var(--white);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      padding: 0.3rem 0.7rem; border-radius: 4px;
+    }
+    .ba-tag.after { background: var(--accent); color: var(--dark); }
+    #gallery .ba-split { height: 100%; }
+    .service-card-body { padding: 1.4rem 1.6rem 1.8rem; }
+    .service-icon { margin-bottom: 0.7rem; }
+    .service-icon i { color: var(--accent); font-size: 1.4rem; }
+    .service-card h3 { color: var(--white); font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .service-card p { color: var(--muted); font-size: 0.9rem; }
+
+    /* ADDONS */
+    .addons-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+    .addon-chip {
+      background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 30px; padding: 0.55rem 1.2rem; font-size: 0.88rem; color: var(--accent);
+    }
+    .addon-chip span { color: var(--muted); margin-left: 0.3rem; }
+
+    /* PHOTO STRIP */
+    #gallery { padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); height: 260px; }
+    .gallery-img { overflow: hidden; position: relative; }
+    .gallery-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.7) saturate(0.8); transition: filter 0.4s, transform 0.4s; }
+    .gallery-img:hover img { filter: brightness(0.9) saturate(1); transform: scale(1.04); }
+    .gallery-img-label {
+      position: absolute; top: 0.8rem; left: 50%; transform: translateX(-50%);
+      background: rgba(11,31,26,0.85); color: var(--accent);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 0.3rem 0.9rem; border-radius: 4px;
+      z-index: 2;
+    }
+
+    /* PRICING */
+    #pricing { background: var(--mid); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; align-items: stretch; }
+    .price-card {
+      background: var(--card); border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 12px; padding: 2rem;
+      display: flex; flex-direction: column;
+      position: relative; transition: transform 0.2s;
+    }
+    .price-card:hover { transform: translateY(-4px); }
+    .price-card.featured { border-color: var(--accent); background: linear-gradient(145deg, #1e3d2f, #162e27); }
+    .popular-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: var(--dark);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      padding: 0.3rem 1rem; border-radius: 20px;
+    }
+    .plan-tier { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .price-card h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 1rem; }
+    .price-amount { font-size: 2.4rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .price-amount sup { font-size: 1.2rem; vertical-align: top; margin-top: 0.4rem; color: var(--accent); }
+    .price-amount sub { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+    .price-from { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; }
+    .price-visits { font-size: 0.85rem; color: var(--muted); margin: 0.8rem 0 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .price-features { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 0.65rem; }
+    .price-features li { display: flex; gap: 0.6rem; align-items: flex-start; color: #aec8be; font-size: 0.9rem; }
+    .price-features li i { color: var(--accent); font-size: 0.8rem; margin-top: 4px; flex-shrink: 0; }
+    .price-card .btn { margin-top: 1.8rem; text-align: center; width: 100%; }
+
+    /* WHY US */
+    #why {
+      background:
+        linear-gradient(rgba(11,31,26,0.92), rgba(11,31,26,0.92)),
+        url('https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover; background-position: center; background-attachment: fixed;
+    }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .why-card {
+      background: rgba(22,46,39,0.85); border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 10px; padding: 1.8rem; text-align: center; backdrop-filter: blur(4px);
+    }
+    .why-icon { margin-bottom: 1rem; }
+    .why-icon i { color: var(--accent); font-size: 1.8rem; }
+    .why-card h3 { color: var(--white); font-size: 1rem; margin-bottom: 0.5rem; }
+    .why-card p { color: var(--muted); font-size: 0.88rem; }
+
+    /* CONTACT */
+    #contact { background: var(--mid); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; align-items: start; }
+    .contact-info h3 { color: var(--white); margin-bottom: 1.2rem; font-size: 1.2rem; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
+    .contact-detail .icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: rgba(201,168,76,0.15);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-detail .icon i { color: var(--accent); font-size: 1rem; }
+    .contact-detail h4 { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .contact-detail p { color: var(--white); font-size: 0.95rem; }
+    .contact-detail a { color: var(--accent); text-decoration: none; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input,
+    .contact-form textarea {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 6px; padding: 0.8rem 1rem; color: var(--white); font-size: 0.95rem;
+      font-family: inherit; transition: border-color 0.2s; outline: none;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--muted); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { resize: vertical; min-height: 130px; }
+    .contact-form .btn { align-self: flex-start; }
+
+    /* FOOTER */
+    footer { background: #060f0c; border-top: 1px solid rgba(201,168,76,0.1); padding: 2rem; text-align: center; }
+    .footer-logo { color: var(--accent); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    footer p { color: var(--muted); font-size: 0.82rem; }
+
+    /* AREAS BAR */
+    .areas-bar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 110;
+      background: var(--accent); color: var(--dark);
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      padding: 0.4rem 0; overflow: hidden; white-space: nowrap;
+    }
+    .areas-bar-track {
+      display: inline-block; padding-left: 100%;
+      animation: areas-scroll 35s linear infinite;
+    }
+    .areas-bar-track span { margin: 0 1.2rem; }
+    .areas-bar-track i { color: var(--dark); margin-right: 0.4rem; }
+    @keyframes areas-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    nav { top: 32px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stats { gap: 1.5rem; }
+      .btn-outline { margin-left: 0; margin-top: 0.8rem; }
+      #gallery { grid-template-columns: 1fr; height: auto; }
+      .gallery-img { height: 180px; }
+      #why { background-attachment: scroll; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- AREAS COVERED -->
+<div class="areas-bar">
+  <div class="areas-bar-track">
+    <i class="fas fa-location-dot"></i><strong>Covering Areas:</strong>
+    <span>Manchester</span>•<span>Chester</span>•<span>Liverpool</span>•<span>Sheffield</span>•<span>Barnsley</span>•<span>Blackburn</span>•<span>Blackpool</span>•<span>Warrington</span>•<span>Wrexham</span>•<span>Stoke on Trent</span>•<span>Crewe</span>•<span>Sandycroft</span>•<span>Ellesmere Port</span>•<span>Winsford</span>
+    &nbsp;&nbsp;&nbsp;
+    <i class="fas fa-location-dot"></i><strong>Covering Areas:</strong>
+    <span>Manchester</span>•<span>Chester</span>•<span>Liverpool</span>•<span>Sheffield</span>•<span>Barnsley</span>•<span>Blackburn</span>•<span>Blackpool</span>•<span>Warrington</span>•<span>Wrexham</span>•<span>Stoke on Trent</span>•<span>Crewe</span>•<span>Sandycroft</span>•<span>Ellesmere Port</span>•<span>Winsford</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Revive <span>the Shine</span></div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-content">
+    <div class="hero-badge">Premium Cleaning Services</div>
+    <h1>Carpet &amp; Upholstery <em>Cleaning Done Properly</em></h1>
+    <p class="hero-sub">Professional carpet and upholstery cleaning in Chester, with reliable service and straightforward support for quotes and queries.</p>
+    <a href="#services" class="btn">View Services</a>
+    <a href="https://wa.me/447780536632?text=Hi%20Revive%20the%20Shine%2C%20I%27d%20like%20a%20quote.%20Minimum%20starting%20price%20-%20Standard%20Cleaning%20%C2%A370%20and%20Deep%20Cleaning%20%C2%A390." class="btn btn-outline">WhatsApp for Quote</a>
+    <div class="hero-stats">
+      <div class="stat"><strong>100%</strong><span>Carpet &amp; Upholstery Focus</span></div>
+      <div class="stat"><strong>Premium</strong><span>Cleaning Service</span></div>
+      <div class="stat"><strong>7 Days</strong><span>Mon &ndash; Sun</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">Who We Are</p>
+    <h2>Premium Carpet &amp; Upholstery Care</h2>
+    <p class="section-intro">We're a Chester-based cleaning service focused on restoring carpets and upholstery with care, consistency, and attention to detail.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Revive the Shine is built around one thing: premium cleaning services for carpets and upholstery. We help lift everyday dirt, revive tired fibres, and leave soft furnishings looking fresher and feeling cleaner.</p>
+        <p>From single-room carpet cleans to full upholstery refreshes, we keep the process straightforward and deliver results with care. If you need a quote or have a question, you can call or message us directly on WhatsApp.</p>
+        <div class="about-features">
+          <div class="feature-row">
+            <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+            <div>
+              <h4>Fabric-Safe Cleaning</h4>
+              <p>Careful treatment for carpets, sofas, chairs, and other upholstered items.</p>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+            <div>
+              <h4>Detail-Focused Service</h4>
+              <p>Targeted cleaning that works on heavy-use areas, marks, and trapped dirt.</p>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+            <div>
+              <h4>Easy Quotes &amp; Queries</h4>
+              <p>Quick contact by phone or WhatsApp, with support available Monday to Sunday.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <img
+          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80"
+          alt="Professional carpet cleaning service"
+          loading="lazy"
+        />
+        <div class="about-overlay">
+          <h3>Our Service Covers:</h3>
+          <ul class="checklist">
+            <li><i class="fas fa-check"></i>Carpet cleaning for high-traffic and lived-in spaces</li>
+            <li><i class="fas fa-check"></i>Sofa and upholstery cleaning with careful fabric handling</li>
+            <li><i class="fas fa-check"></i>Freshening for chairs, cushions, and soft furnishings</li>
+            <li><i class="fas fa-check"></i>Targeted attention on marked or tired-looking areas</li>
+            <li><i class="fas fa-check"></i>Service tailored to your home, room count, and furniture</li>
+            <li><i class="fas fa-check"></i>Quotes and queries handled directly by phone or WhatsApp</li>
+            <li><i class="fas fa-check"></i>Available Monday to Sunday in Chester</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="section-label">What We Offer</p>
+    <h2>Focused on Carpets &amp; Upholstery</h2>
+    <p class="section-intro">We keep the service clear and specialised, with premium cleaning for carpets, sofas, chairs, and soft furnishings.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="ba-split">
+          <div class="ba-half">
+            <img src="https://plus.unsplash.com/premium_photo-1676810460522-bc963e5554d8?auto=format&fit=crop&w=400&q=75" alt="Carpet before cleaning" loading="lazy" />
+            <span class="ba-tag">BEFORE</span>
+          </div>
+          <div class="ba-half">
+            <img src="https://images.unsplash.com/photo-1534889156217-d643df14f14a?auto=format&fit=crop&w=400&q=75" alt="Clean carpet after cleaning" loading="lazy" />
+            <span class="ba-tag after">AFTER</span>
+          </div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-icon"><i class="fas fa-rug"></i></div>
+          <h3>Carpet Cleaning</h3>
+          <p>Deep cleaning for carpets in living rooms, bedrooms, hallways, stairs, and other high-use areas.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="ba-split">
+          <div class="ba-half">
+            <img src="https://images.unsplash.com/photo-1582635335978-a1f1da12d152?auto=format&fit=crop&w=400&q=75" alt="Sofa before cleaning" loading="lazy" />
+            <span class="ba-tag">BEFORE</span>
+          </div>
+          <div class="ba-half">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=75" alt="Clean sofa after cleaning" loading="lazy" />
+            <span class="ba-tag after">AFTER</span>
+          </div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-icon"><i class="fas fa-couch"></i></div>
+          <h3>Upholstery Cleaning</h3>
+          <p>Careful cleaning for sofas, armchairs, dining chairs, and other upholstered furniture.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="ba-split">
+          <div class="ba-half">
+            <img src="https://plus.unsplash.com/premium_photo-1692063696853-637c00edc955?auto=format&fit=crop&w=400&q=75" alt="Room before refresh" loading="lazy" />
+            <span class="ba-tag">BEFORE</span>
+          </div>
+          <div class="ba-half">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=75" alt="Refreshed chair after cleaning" loading="lazy" />
+            <span class="ba-tag after">AFTER</span>
+          </div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-icon"><i class="fas fa-spray-can-sparkles"></i></div>
+          <h3>Targeted Refresh</h3>
+          <p>Ideal for lifting visible wear in frequently used seating areas and tired-looking carpet sections.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 style="color:var(--accent);margin-top:3rem;margin-bottom:0.5rem;font-size:1rem;letter-spacing:1px;text-transform:uppercase;">Quote Support</h3>
+    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:0;">Message us directly for quotes and queries:</p>
+    <div class="addons-row">
+      <div class="addon-chip">Phone <span>+44 7780 536632</span></div>
+      <div class="addon-chip">WhatsApp <span>Fast quote replies</span></div>
+      <div class="addon-chip">Hours <span>Monday &ndash; Sunday</span></div>
+      <div class="addon-chip">Location <span>Chester</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div id="gallery">
+  <div class="gallery-img">
+    <div class="ba-split">
+      <div class="ba-half">
+        <img src="https://plus.unsplash.com/premium_photo-1676810460522-bc963e5554d8?auto=format&fit=crop&w=400&q=75" alt="Carpet before" loading="lazy" />
+        <span class="ba-tag">BEFORE</span>
+      </div>
+      <div class="ba-half">
+        <img src="https://images.unsplash.com/photo-1534889156217-d643df14f14a?auto=format&fit=crop&w=400&q=75" alt="Clean carpet" loading="lazy" />
+        <span class="ba-tag after">AFTER</span>
+      </div>
+    </div>
+    <span class="gallery-img-label">Carpets</span>
+  </div>
+  <div class="gallery-img">
+    <div class="ba-split">
+      <div class="ba-half">
+        <img src="https://images.unsplash.com/photo-1582635335978-a1f1da12d152?auto=format&fit=crop&w=400&q=75" alt="Sofa before" loading="lazy" />
+        <span class="ba-tag">BEFORE</span>
+      </div>
+      <div class="ba-half">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=75" alt="Clean sofa" loading="lazy" />
+        <span class="ba-tag after">AFTER</span>
+      </div>
+    </div>
+    <span class="gallery-img-label">Upholstery</span>
+  </div>
+  <div class="gallery-img">
+    <div class="ba-split">
+      <div class="ba-half">
+        <img src="https://plus.unsplash.com/premium_photo-1692063696853-637c00edc955?auto=format&fit=crop&w=400&q=75" alt="Room before" loading="lazy" />
+        <span class="ba-tag">BEFORE</span>
+      </div>
+      <div class="ba-half">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=400&q=75" alt="Fresh sofa and soft furnishings" loading="lazy" />
+        <span class="ba-tag after">AFTER</span>
+      </div>
+    </div>
+    <span class="gallery-img-label">Fresh Finish</span>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <p class="section-label">Our Process</p>
+    <h2>Simple Quotes, Clear Service</h2>
+    <p class="section-intro">Tell us what needs cleaning, where you're based in Chester, and we'll help with the right quote.</p>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <div class="plan-tier">Step 1</div>
+        <h3>Tell Us What You Need</h3>
+        <div class="price-from">Share details for</div>
+        <div class="price-amount">Carpets<sub> / upholstery</sub></div>
+        <div class="price-visits">Room sizes, furniture type, and location</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i>Carpet cleaning requests welcome</li>
+          <li><i class="fas fa-check"></i>Upholstery cleaning requests welcome</li>
+          <li><i class="fas fa-check"></i>Suitable for single items or multiple rooms</li>
+          <li><i class="fas fa-check"></i>Quick response for quote enquiries</li>
+          <li><i class="fas fa-check"></i>Chester service area</li>
+          <li><i class="fas fa-check"></i>Monday to Sunday availability</li>
+        </ul>
+        <a href="https://wa.me/447780536632?text=Hi%20Revive%20the%20Shine%2C%20I%27d%20like%20a%20quote.%20Minimum%20starting%20price%20-%20Standard%20Cleaning%20%C2%A370%20and%20Deep%20Cleaning%20%C2%A390." class="btn btn-outline">WhatsApp Us</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="popular-badge">Fastest Route</div>
+        <div class="plan-tier">Step 2</div>
+        <h3>Get Your Quote</h3>
+        <div class="price-from">Direct contact on</div>
+        <div class="price-amount">WhatsApp<sub> / phone</sub></div>
+        <div class="price-visits">For quotes and queries</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i>Send a message on WhatsApp</li>
+          <li><i class="fas fa-check"></i>Call +44 7780 536632</li>
+          <li><i class="fas fa-check"></i>Ask about carpet cleaning</li>
+          <li><i class="fas fa-check"></i>Ask about upholstery cleaning</li>
+          <li><i class="fas fa-check"></i>Clear support for service queries</li>
+          <li><i class="fas fa-check"></i>Available every day</li>
+        </ul>
+        <a href="https://wa.me/447780536632?text=Hi%20Revive%20the%20Shine%2C%20I%27d%20like%20a%20quote.%20Minimum%20starting%20price%20-%20Standard%20Cleaning%20%C2%A370%20and%20Deep%20Cleaning%20%C2%A390." class="btn">Get Quote</a>
+      </div>
+
+      <div class="price-card">
+        <div class="plan-tier">Step 3</div>
+        <h3>Book Your Clean</h3>
+        <div class="price-from">Arrange a visit for</div>
+        <div class="price-amount">Chester<sub> service</sub></div>
+        <div class="price-visits">Carpet and upholstery cleaning only</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i>Convenient appointment scheduling</li>
+          <li><i class="fas fa-check"></i>Focused, premium cleaning service</li>
+          <li><i class="fas fa-check"></i>No unrelated cleaning extras</li>
+          <li><i class="fas fa-check"></i>Support before and after booking</li>
+          <li><i class="fas fa-check"></i>Friendly contact on WhatsApp</li>
+          <li><i class="fas fa-check"></i>Monday to Sunday hours</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">Contact Details</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <p class="section-label">Why Choose Us</p>
+    <h2>Why Customers Contact Us</h2>
+    <p class="section-intro">A straightforward service focused on premium carpet and upholstery cleaning in Chester.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-shield"></i></div>
+        <h3>Focused Service</h3>
+        <p>We concentrate on carpets and upholstery, so the message and service stay clear.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Premium Cleaning</h3>
+        <p>Careful attention to fibres, fabrics, and the finish across soft surfaces.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-clock"></i></div>
+        <h3>Reliable Contact</h3>
+        <p>Quotes and queries can be handled quickly by phone or WhatsApp.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-sterling-sign"></i></div>
+        <h3>Clear Quotes</h3>
+        <p>Tell us what needs cleaning and we can guide you with the right quote.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-handshake"></i></div>
+        <h3>Seven-Day Availability</h3>
+        <p>Open Monday to Sunday so it is easier to reach us when you need us.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-location-dot"></i></div>
+        <h3>Local to Chester</h3>
+        <p>Chester is the location we present clearly across the site.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Get in Touch</p>
+    <h2>Get a Quote or Ask a Question</h2>
+    <p class="section-intro">Call us or send a WhatsApp message for carpet and upholstery cleaning in Chester.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Our Details</h3>
+        <div class="contact-detail">
+          <div class="icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:+447780536632">+44 7780 536632</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/447780536632?text=Hi%20Revive%20the%20Shine%2C%20I%27d%20like%20a%20quote.%20Minimum%20starting%20price%20-%20Standard%20Cleaning%20%C2%A370%20and%20Deep%20Cleaning%20%C2%A390.">Message us for quote and query</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h4>Hours</h4>
+            <p>Monday &ndash; Sunday</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon"><i class="fas fa-location-dot"></i></div>
+          <div>
+            <h4>Location</h4>
+            <p>Chester</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Your Name" />
+        <input type="tel" placeholder="Phone Number" />
+        <input type="text" placeholder="Carpet or upholstery?" />
+        <textarea placeholder="Tell us what needs cleaning and we’ll be ready when you message us on WhatsApp."></textarea>
+        <a href="https://wa.me/447780536632?text=Hi%20Revive%20the%20Shine%2C%20I%27d%20like%20a%20quote.%20Minimum%20starting%20price%20-%20Standard%20Cleaning%20%C2%A370%20and%20Deep%20Cleaning%20%C2%A390." class="btn">Open WhatsApp</a>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Revive the Shine</div>
+  <p>Chester &nbsp;|&nbsp; +44 7780 536632 &nbsp;|&nbsp; Monday &ndash; Sunday</p>
+  <p style="margin-top:0.5rem;">&copy; 2026 Revive the Shine. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
